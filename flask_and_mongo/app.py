@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = "your-secret-key"  # Needed for flash messages
 
 # MongoDB Atlas Connection
-client = MongoClient("mongodb+srv://kundanagrawal18:kundan18%40123@cluster0.jfywelg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tls=true")
+client = MongoClient("mongodb+srv://kundanagrawal18:removed_it_cluster0.jfywelg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&tls=true")
 db = client["practicedb"]
 collection = db["users"]
 
