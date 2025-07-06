@@ -37,5 +37,18 @@ def form():
 def success():
     return render_template('success.html')
 
+from flask import request, jsonify
+
+@app.route('/submittodoitem', methods=['POST'])
+def submit_todo():
+    try:
+        item_name = request.form['itemName']
+        item_desc = request.form['itemDescription']
+        collection.insert_one({"item_name": item_name, "item_description": item_desc})
+        return jsonify({"status": "success", "message": "Item added"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
