@@ -37,6 +37,18 @@ def form():
 def success():
     return render_template('success.html')
 
+
+@app.route('/submittodoitem', methods=['POST'])
+def submit_todo():
+    try:
+        item_name = request.form['itemName']
+        item_desc = request.form['itemDescription']
+        collection.insert_one({"item_name": item_name, "item_description": item_desc})
+        return jsonify({"status": "success", "message": "Item added"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+
+
 @app.route('/todo', methods=['GET'])
 def todo_form():
     return render_template('todo.html')
